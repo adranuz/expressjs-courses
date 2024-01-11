@@ -1,0 +1,13 @@
+### Este es el endpoint para el webhook de github
+POST http://localhost:3000/api/github HTTP/1.1
+content-type: application/json
+
+### ngrok para exponer el puerto 3000
+POST https://06e2-2806-310-409-bbec-fd4d-383f-309c-761b.ngrok-free.app HTTP/1.1
+
+content-type: application/json
+
+### Este se utiliza para obtener un token de acceso mediante una palabra secreta
+GET http://localhost:3000/api/secret HTTP/1.1
+content-type: application/json
+x-secret: olacredit

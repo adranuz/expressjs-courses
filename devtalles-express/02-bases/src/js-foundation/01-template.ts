@@ -1,5 +1,5 @@
 // modulo
-const emailTemplate = `
+export const emailTemplate = `
   <div>
     <h1>Hi, {{name}}</h1>
     <p>Thanks for your subscription</p>
@@ -7,6 +7,6 @@ const emailTemplate = `
   </div>
 `
 
-module.exports = {
-  emailTemplate
-}
+// module.exports = {
+//   emailTemplate
+// }

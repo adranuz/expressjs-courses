@@ -33,7 +33,9 @@
 //   .catch(console.log)
 
 // building logger
-const { buildLogger } = require('./plugins')
-const logger = buildLogger('app.js')
+// const { buildLogger } = require('./plugins')
+import { buildLogger } from './plugins'
+
+const logger = buildLogger('app.ts')
 logger.log('hola mundo')
 logger.error('hola mundo')

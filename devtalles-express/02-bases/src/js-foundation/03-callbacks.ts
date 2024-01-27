@@ -1,4 +1,3 @@
-
 interface User {
   id : number;
   name : string;
@@ -22,7 +21,10 @@ export const getUserById = (id: number, callback: CallBack) => {
   const user = users.find(user => user.id === id);
 
   if (!user) {
-    return callback(`User with id ${id} not exists`, undefined);
+    setTimeout(() => {
+      callback(`User with id ${id} not exists`, undefined);
+    }, 2500)
+    return
   }
   return callback(undefined, user);
 }

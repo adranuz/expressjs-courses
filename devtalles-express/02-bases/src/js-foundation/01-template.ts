@@ -3,7 +3,7 @@ export const emailTemplate = `
   <div>
     <h1>Hi, {{name}}</h1>
     <p>Thanks for your subscription</p>
-    <p>Regards</p>
+    <p>Order ID: {{orderId}}</p>
   </div>
 `
 

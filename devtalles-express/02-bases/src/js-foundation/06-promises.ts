@@ -1,10 +1,14 @@
 import { httpClientPlugin } from "../plugins"
 // const { httpClientPlugin } = require('../plugins/http-client.plugin')
 
-
-httpClientPlugin
-const getPokemonById = async (id: string|number):Promise<string> => {
-  const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+export const getPokemonById = async (id: string|number):Promise<string> => {
+  try {
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+    const pokemon = await httpClientPlugin.get(url)
+    return pokemon.name
+  } catch (error) {
+    throw new Error(`Pokemon not found with id ${id}`)
+  }
   
   // fetch(url).then((res) => res.json())
   //   .then((data) => {
@@ -15,10 +19,4 @@ const getPokemonById = async (id: string|number):Promise<string> => {
   // const data = await res.json()
   // throw new Error('Error en la peticion')
   
-  const pokemon = await httpClientPlugin.get(url)
-  return pokemon.name
-}
-
-module.exports = {
-  getPokemonById
 }

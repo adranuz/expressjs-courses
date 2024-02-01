@@ -2,7 +2,7 @@
 export { getUUID } from './uuid.plugin'
 export { getAge } from './get-age.plugin'
 export { httpClientPlugin } from './http-client.plugin'
-export { buildLogger } from './logger.plugin'
+export { buildLogger, logger } from './logger.plugin'
 // export { buildLogger }
 // js imports
 // const { getUUID } = require('./uuid.plugin')

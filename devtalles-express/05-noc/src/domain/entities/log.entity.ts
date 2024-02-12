@@ -32,6 +32,7 @@ export class LogEntity {
     this.origin = origin
   }
 
+  // convierte un JSON a la instancia de LogEntity
   static fromJSON(json: string): LogEntity {
     const { message, level, createdAt, origin } = JSON.parse(json)
     const log = new LogEntity({
@@ -40,6 +41,14 @@ export class LogEntity {
       createdAt,
       origin,
     })
+    return log
+  }
+
+  // adapta un objeto a una instancia de LogEntity
+  static fromObject(obj: {[key: string]: any}): LogEntity {
+    const {message, level, createdAt, origin} = obj
+    // validate that there is no missing properties
+    const log = new LogEntity({message, level, createdAt, origin})
     return log
   }
 }

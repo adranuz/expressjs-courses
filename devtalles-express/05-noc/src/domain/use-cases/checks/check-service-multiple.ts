@@ -10,12 +10,17 @@ type ErrorCallback = ((error: string) => void) | undefined
 
 // el use-case contiene la facilidad de uso, es decir,
 // no necesitas mas logica mas que usar uno y ya
-export class CheckService implements CheckServiceUseCase{
+export class CheckServiceMultiple implements CheckServiceUseCase{
   constructor(
-    private readonly logRepository: LogRepository,
+    private readonly logRepository: LogRepository[],
     private readonly successCallback: SuccessCallback,
     private readonly errorCallback: ErrorCallback
   ) {}
+  private callLogs(log: LogEntity) {
+    this.logRepository.forEach(logRepository => {
+      logRepository.saveLog(log)
+    })
+  }
   // no es estatico porque le vamos a inyectar una dependencia
   public async execute(url: string): Promise<boolean> {
     try {
@@ -26,7 +31,7 @@ export class CheckService implements CheckServiceUseCase{
         level: LogSeverityLevel.low,
         origin: 'por ahi'
       })
-      this.logRepository.saveLog(log)
+      this.callLogs(log)
       this.successCallback && this.successCallback()
       return true
     } catch (error) {
@@ -36,7 +41,7 @@ export class CheckService implements CheckServiceUseCase{
         level: LogSeverityLevel.high,
         origin: 'por ahi'
       })
-      this.logRepository.saveLog(log)
+      this.callLogs(log)
       this.errorCallback && this.errorCallback(`${error}`)
       return false
     }

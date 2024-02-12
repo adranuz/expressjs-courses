@@ -29,6 +29,7 @@ docker-compose up -d
 ## descripcion de librerias
 ### Produccion
   - cron: la libreria cron se utiliza para programar tareas en un tiempo determinado
-  - dotenv: para leer el archivo .env,
+  - dotenv: para leer el archivo .env
   - env-var: para validar las variables de entorno en tipo y dato
   - nodemailer: manejador de correos
+  - prisma: ORM para la base de datos relacionales

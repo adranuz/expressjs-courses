@@ -11,7 +11,7 @@ const severityEnum = {
 }
 export class PostgresLogDataSource implements LogDatasource {
 	async saveLog(log: LogEntity) {
-    // const newLog = new LogEntity(log)
+    const newLog = new LogEntity(log)
     const createdLog = await prismaClient.logModel.create({
       data: {
         message: log.message,

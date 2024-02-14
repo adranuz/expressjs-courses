@@ -33,12 +33,12 @@ export class LogEntity {
   }
 
   // convierte un JSON a la instancia de LogEntity
-  static fromJSON(json: string): LogEntity {
-    const { message, level, createdAt, origin } = JSON.parse(json)
+  static async fromJSON(json: string): Promise<LogEntity> {
+    const { message, level, createdAt, origin } = await JSON.parse(json)
     const log = new LogEntity({
       level,
       message,
-      createdAt,
+      createdAt: new Date(createdAt),
       origin,
     })
     return log

@@ -33,3 +33,13 @@ docker-compose up -d
   - env-var: para validar las variables de entorno en tipo y dato
   - nodemailer: manejador de correos
   - prisma: ORM para la base de datos relacionales
+  - 
+
+## Testing
+En este caso se hizo el testing sobre bases de datos levantadas en docker
+En un proyecto ideal, es mejor hacer el testing con una db que este alojada, puesto que es mas facil correr los test fuera de nuestro local.
+Para ello puedes hacer uso de servicios gratuitos como:
+  - [Supabase](https://supabase.io/)
+  - [ElephantSQL](https://www.elephantsql.com/)
+  - [Heroku](https://www.heroku.com/)
+  - [AWS](https://aws.amazon.com/es/)

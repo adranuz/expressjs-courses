@@ -3,14 +3,15 @@ import { envs } from '../../config/plugins/envs.plugins'
 import { LogRepository } from '../../domain/repository/log.repository';
 import { LogEntity, LogSeverityLevel } from '../../domain/entities/log.entity';
 
-interface SendMailOptions {
+export interface SendMailOptions {
   to: string | string[];
   subject: string;
   htmlBody: string;
-  attachments: Attachments[];
+  attachments?: Attachments[];
 }
-interface Attachments {
-
+export interface Attachments {
+  filename: string;
+  path: string;
 }
 
 // TODO: Atachments
@@ -24,7 +25,7 @@ export class EmailService {
   })
 
   // para poder seleccionar el repositorio que va a utilizarse
-  constructor(private readonly logRepository: LogRepository) {}
+  // constructor(private readonly logRepository: LogRepository) {}
 
   async sendEmail(options: SendMailOptions): Promise<boolean> {
     const { htmlBody, subject, to, attachments = []} = options
@@ -38,23 +39,23 @@ export class EmailService {
       })
 
       // guardar log de correo enviado
-      const log = new LogEntity({
-        level: LogSeverityLevel.low,
-        message: `Email sent`,
-        origin: 'email.service.ts'
-      })
-      this.logRepository.saveLog(log)
+      // const log = new LogEntity({
+      //   level: LogSeverityLevel.low,
+      //   message: `Email sent`,
+      //   origin: 'email.service.ts'
+      // })
+      // this.logRepository.saveLog(log)
 
-      console.log(sentInformation)
+      // console.log(sentInformation)
       return true
     } catch (error) {
       // guardar log de error al enviar correo
-      const log = new LogEntity({
-        level: LogSeverityLevel.low,
-        message: `Email sent`,
-        origin: 'email.service.ts'
-      })
-      this.logRepository.saveLog(log)
+      // const log = new LogEntity({
+      //   level: LogSeverityLevel.high,
+      //   message: `Email log not sent`,
+      //   origin: 'email.service.ts'
+      // })
+      // this.logRepository.saveLog(log)
       return false
     }
   }

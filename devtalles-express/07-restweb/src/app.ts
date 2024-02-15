@@ -1,18 +1,15 @@
-import http from 'http'
+import { envs } from "./config/envs"
+import { Server } from "./presentation/server"
 
-const server = http.createServer((req, res) => {
-  console.log(req.url)
-  
-  // esta informacion es muy limitada por lo que usaremos otra cosa
-  // res.write('Hello World')
-  // res.end()
-  
-  res.writeHead(200, { 'Content-Type': 'text/html' })
-  res.write('<h1>Hello World</h1>')
-  res.end()
-})
 
-server.listen(3000, () => {
-  console.log('Server is running at http://localhost:3000')
-})
+(()=> {
+ main()
+})()
 
+function main () {
+  const server = new Server({
+    PORT: envs.PORT,
+    PUBLIC_PATH: envs.PUBLIC_PATH
+  })
+  server.start()
+}

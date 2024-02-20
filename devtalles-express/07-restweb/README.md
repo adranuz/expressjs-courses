@@ -6,3 +6,7 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' -keyout 
 ## o
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt
 ```
+
+## dev
+1. clonar el .env.template y crear el .env
+2. ejecutar el comando ```docker compose up -d```

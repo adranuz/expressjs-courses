@@ -14,3 +14,7 @@ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout server.key -
 
 
 ## DTO - reglas del crud de los endpoints
+
+
+## recomendaciones en produccion
+[link]('https://expressjs.com/en/advanced/best-practice-performance.html')

@@ -1,5 +1,6 @@
 ### variables
 @url = http://localhost:3000
+@urlProd = https://expressjs-courses-production.up.railway.app/api/todos
 
 ### get todos
 GET {{url}}/api/todos HTTP/1.1
@@ -10,16 +11,19 @@ POST {{url}}/api/todos HTTP/1.1
 content-type: application/json
 
 {
-    "text": "Go to the market"
+    "text": "Go shopping"
 }
 
 ### update todo
-PUT {{url}}/api/todos/16 HTTP/1.1
+PUT {{url}}/api/todos/12 HTTP/1.1
 content-type: application/json
 
 {
-    "text": "Go to bedas"
+    "text": "Go shopping"
 }
 
 ### delete todo
 DELETE {{url}}/api/todos/1 HTTP/1.1
+
+### get todos
+GET {{urlProd}} HTTP/1.1

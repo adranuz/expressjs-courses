@@ -19,7 +19,7 @@ PUT {{url}}/api/todos/12 HTTP/1.1
 content-type: application/json
 
 {
-    "text": "Go shopping"
+    "text": "Go mall"
 }
 
 ### delete todo

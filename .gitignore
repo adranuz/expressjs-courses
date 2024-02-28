@@ -436,3 +436,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/node,windows,macos,linux
+
+devtalles-express/07-restweb/postgres

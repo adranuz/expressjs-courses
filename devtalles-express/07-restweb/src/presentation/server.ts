@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
 import path from 'path';
-import compression from 'compression';
+// import compression from 'compression';
 
 
 interface Options {
@@ -10,7 +10,8 @@ interface Options {
 }
 
 export class Server {
-  private app = express();
+  public readonly app = express();
+  private serverListener?: any
   private readonly port: number;
   private readonly publicPath: string;
   private readonly router: Router;
@@ -21,12 +22,16 @@ export class Server {
     this.router = options.router
   }
 
+  public close() {
+    this.serverListener?.close()
+  }
+
   async start() {
 
     // middleware
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: true })) // x-www-form-urlencoded
-    this.app.use(compression)
+    // this.app.use(compression)
 
     // Public Folder
     this.app.use(express.static(this.publicPath))
@@ -43,8 +48,9 @@ export class Server {
       return
     })
 
-    this.app.listen(this.port, () => {
-      console.log(`Server is running at http://localhost:${this.port}`)
+    this.serverListener = this.app.listen(this.port, () => {
+      // console.log(`Server is running at http://localhost:${this.port}`)
     })
   }
+
 }

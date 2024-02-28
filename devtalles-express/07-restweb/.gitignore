@@ -3,4 +3,5 @@ keys/
 .env
 
 dist/
-postgres/
+/postgres/*
+postgres-test/

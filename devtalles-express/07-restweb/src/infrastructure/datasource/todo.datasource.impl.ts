@@ -24,12 +24,16 @@ export class TodoDatasourceImpl implements TodoDatasource{
   }
   async updateById(updateTodoDto: UpdateTodoDto): Promise<TodoEntity> {
     const {id, text, completedAt} = updateTodoDto;
-    const todo = await prisma.todo.update({
-      where: {id},
-      data: {text, completedAt}
-    });
-    if(!todo) throw new Error('Todo not found');
-    return TodoEntity.fromObject(todo);
+    try {
+      const todo = await prisma.todo.update({
+        where: {id},
+        data: {text, completedAt}
+      });
+      return TodoEntity.fromObject(todo);
+    } catch (error) {
+      throw new Error('Todo not found');
+    }
+
   }
 
 }

@@ -11,7 +11,7 @@ export class TodosController {
   public getTodos = ( req: Request, res: Response) => {
     new GetTodos(this.todosRepository).execute()
     .then( todos => res.json( todos ) )
-    .catch( error => res.status(500).json({ error: error.message }) );
+    .catch( error => res.status(400).json({ error: error.message }) );
   }
 
   public getTodoById = ( req: Request, res: Response) => {
@@ -19,7 +19,7 @@ export class TodosController {
     const id = +req.params.id;
     new GetTodo(this.todosRepository).execute(id)
     .then( todo => res.json( todo ) )
-    .catch( error => res.status(404).json({ error: error.message }) );
+    .catch( error => res.status(400).json({ error: error.message }) );
   }
 
   public createTodo = ( req: Request, res: Response ) => {
@@ -29,7 +29,7 @@ export class TodosController {
 
     // creacion
     new CreateTodo(this.todosRepository).execute(createTodoDto!)
-    .then( todo => res.json( todo ) )
+    .then( todo => res.status(201).json( todo ) )
     .catch( error => res.status(400).json({ error: error.message }) );
   };
 

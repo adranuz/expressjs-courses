@@ -18,7 +18,7 @@ export class TodosController {
     const id = +req.params.id;
     try {
       const todo = await this.todosRepository.getById(id);
-      res.json( todo );
+      res.status(200).json( todo );
     } catch (error) {
       res.status(404).json({ error: `Todo with id ${ id } not found` });
     }

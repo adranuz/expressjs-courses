@@ -1,0 +1,16 @@
+### hello function
+GET http://localhost:8888/.netlify/functions/hello
+### env vars function
+GET http://localhost:8888/.netlify/functions/variables
+### github-discord function
+GET http://localhost:8888/.netlify/functions/github-discord
+
+
+### production function
+GET https://ags-test-functions.netlify.app/.netlify/functions/hello
+### production function
+GET https://ags-test-functions.netlify.app/.netlify/functions/variables
+### production function
+GET https://ags-test-functions.netlify.app/.netlify/functions/github-discord
+
+
